@@ -1,0 +1,116 @@
+[19-Aug-2021 12:15:02 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'oci8_12c' (tried: ext\oci8_12c (The specified module could not be found), ext\php_oci8_12c.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 12:15:02 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'oci8_19' (tried: ext\oci8_19 (The specified module could not be found), ext\php_oci8_19.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 12:15:02 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'pdo_firebird' (tried: ext\pdo_firebird (The specified module could not be found), ext\php_pdo_firebird.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 12:15:02 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'pdo_oci' (tried: ext\pdo_oci (The specified module could not be found), ext\php_pdo_oci.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 12:15:02 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function file_get_content() in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php:2
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 2
+[19-Aug-2021 12:19:23 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'oci8_12c' (tried: ext\oci8_12c (The specified module could not be found), ext\php_oci8_12c.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 12:19:23 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'oci8_19' (tried: ext\oci8_19 (The specified module could not be found), ext\php_oci8_19.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 12:19:23 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'pdo_firebird' (tried: ext\pdo_firebird (The specified module could not be found), ext\php_pdo_firebird.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 12:19:23 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'pdo_oci' (tried: ext\pdo_oci (The specified module could not be found), ext\php_pdo_oci.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 12:19:23 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function file_get_content() in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php:2
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 2
+[19-Aug-2021 12:21:20 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'oci8_12c' (tried: ext\oci8_12c (The specified module could not be found), ext\php_oci8_12c.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 12:21:20 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'oci8_19' (tried: ext\oci8_19 (The specified module could not be found), ext\php_oci8_19.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 12:21:20 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'pdo_firebird' (tried: ext\pdo_firebird (The specified module could not be found), ext\php_pdo_firebird.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 12:21:20 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'pdo_oci' (tried: ext\pdo_oci (The specified module could not be found), ext\php_pdo_oci.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 12:21:20 UTC] PHP Warning:  file_get_contents(): open_basedir restriction in effect. File(./data/countryBorders.geo.json) is not within the allowed path(s): (“C:\inetpub\wwwroot”) in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 2
+[19-Aug-2021 12:21:20 UTC] PHP Warning:  file_get_contents(./data/countryBorders.geo.json): Failed to open stream: Operation not permitted in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 2
+[19-Aug-2021 13:00:36 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'oci8_12c' (tried: ext\oci8_12c (The specified module could not be found), ext\php_oci8_12c.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 13:00:36 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'oci8_19' (tried: ext\oci8_19 (The specified module could not be found), ext\php_oci8_19.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 13:00:36 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'pdo_firebird' (tried: ext\pdo_firebird (The specified module could not be found), ext\php_pdo_firebird.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 13:00:36 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'pdo_oci' (tried: ext\pdo_oci (The specified module could not be found), ext\php_pdo_oci.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 13:00:36 UTC] PHP Warning:  file_get_contents(): open_basedir restriction in effect. File(../data/countryBorders.geo.json) is not within the allowed path(s): (“C:\inetpub\wwwroot”) in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 2
+[19-Aug-2021 13:00:36 UTC] PHP Warning:  file_get_contents(../data/countryBorders.geo.json): Failed to open stream: Operation not permitted in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 2
+[19-Aug-2021 13:00:36 UTC] PHP Warning:  Attempt to read property "features" on null in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 4
+[19-Aug-2021 13:00:36 UTC] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($var) must be of type Countable|array, null given in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php:8
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 8
+[19-Aug-2021 13:02:39 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'oci8_12c' (tried: ext\oci8_12c (The specified module could not be found), ext\php_oci8_12c.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 13:02:39 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'oci8_19' (tried: ext\oci8_19 (The specified module could not be found), ext\php_oci8_19.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 13:02:39 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'pdo_firebird' (tried: ext\pdo_firebird (The specified module could not be found), ext\php_pdo_firebird.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 13:02:39 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'pdo_oci' (tried: ext\pdo_oci (The specified module could not be found), ext\php_pdo_oci.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 13:02:39 UTC] PHP Warning:  file_get_contents(): open_basedir restriction in effect. File(../data/countryBorders.geo.json) is not within the allowed path(s): (“C:\inetpub\wwwroot”) in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 2
+[19-Aug-2021 13:02:39 UTC] PHP Warning:  file_get_contents(../data/countryBorders.geo.json): Failed to open stream: Operation not permitted in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 2
+[19-Aug-2021 13:02:39 UTC] PHP Warning:  Attempt to read property "features" on null in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 4
+[19-Aug-2021 13:02:39 UTC] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 9
+[19-Aug-2021 13:02:39 UTC] PHP Warning:  Attempt to read property "properties" on null in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 9
+[19-Aug-2021 13:02:39 UTC] PHP Warning:  Attempt to read property "name" on null in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 10
+[19-Aug-2021 13:02:39 UTC] PHP Warning:  Attempt to read property "iso_a2" on null in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 10
+[19-Aug-2021 13:04:12 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'oci8_12c' (tried: ext\oci8_12c (The specified module could not be found), ext\php_oci8_12c.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 13:04:12 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'oci8_19' (tried: ext\oci8_19 (The specified module could not be found), ext\php_oci8_19.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 13:04:12 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'pdo_firebird' (tried: ext\pdo_firebird (The specified module could not be found), ext\php_pdo_firebird.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 13:04:12 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'pdo_oci' (tried: ext\pdo_oci (The specified module could not be found), ext\php_pdo_oci.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 13:04:12 UTC] PHP Warning:  file_get_contents(): open_basedir restriction in effect. File(../data/countryBorders.geo.json) is not within the allowed path(s): (“C:\inetpub\wwwroot”) in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 2
+[19-Aug-2021 13:04:12 UTC] PHP Warning:  file_get_contents(../data/countryBorders.geo.json): Failed to open stream: Operation not permitted in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 2
+[19-Aug-2021 13:04:12 UTC] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 4
+[19-Aug-2021 13:04:12 UTC] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($var) must be of type Countable|array, null given in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php:8
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 8
+[19-Aug-2021 13:04:33 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'oci8_12c' (tried: ext\oci8_12c (The specified module could not be found), ext\php_oci8_12c.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 13:04:33 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'oci8_19' (tried: ext\oci8_19 (The specified module could not be found), ext\php_oci8_19.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 13:04:33 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'pdo_firebird' (tried: ext\pdo_firebird (The specified module could not be found), ext\php_pdo_firebird.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 13:04:33 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'pdo_oci' (tried: ext\pdo_oci (The specified module could not be found), ext\php_pdo_oci.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 13:04:33 UTC] PHP Warning:  file_get_contents(): open_basedir restriction in effect. File(../data/countryBorders.geo.json) is not within the allowed path(s): (“C:\inetpub\wwwroot”) in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 2
+[19-Aug-2021 13:04:33 UTC] PHP Warning:  file_get_contents(../data/countryBorders.geo.json): Failed to open stream: Operation not permitted in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 2
+[19-Aug-2021 13:04:33 UTC] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 4
+[19-Aug-2021 13:04:33 UTC] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 9
+[19-Aug-2021 13:04:33 UTC] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 9
+[19-Aug-2021 13:04:33 UTC] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 10
+[19-Aug-2021 13:04:33 UTC] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 10
+[19-Aug-2021 13:09:02 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'oci8_12c' (tried: ext\oci8_12c (The specified module could not be found), ext\php_oci8_12c.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 13:09:02 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'oci8_19' (tried: ext\oci8_19 (The specified module could not be found), ext\php_oci8_19.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 13:09:02 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'pdo_firebird' (tried: ext\pdo_firebird (The specified module could not be found), ext\php_pdo_firebird.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 13:09:02 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'pdo_oci' (tried: ext\pdo_oci (The specified module could not be found), ext\php_pdo_oci.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 13:09:02 UTC] PHP Warning:  file_get_contents(): open_basedir restriction in effect. File(../data/countryBorders.geo.json) is not within the allowed path(s): (“C:\inetpub\wwwroot”) in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 2
+[19-Aug-2021 13:09:02 UTC] PHP Warning:  file_get_contents(../data/countryBorders.geo.json): Failed to open stream: Operation not permitted in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 2
+[19-Aug-2021 13:09:02 UTC] PHP Warning:  Attempt to read property "features" on null in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 4
+[19-Aug-2021 13:09:02 UTC] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 9
+[19-Aug-2021 13:09:02 UTC] PHP Warning:  Attempt to read property "properties" on null in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 9
+[19-Aug-2021 13:09:02 UTC] PHP Warning:  Attempt to read property "name" on null in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 10
+[19-Aug-2021 13:09:02 UTC] PHP Warning:  Attempt to read property "iso_a2" on null in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 10
+[19-Aug-2021 13:09:16 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'oci8_12c' (tried: ext\oci8_12c (The specified module could not be found), ext\php_oci8_12c.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 13:09:16 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'oci8_19' (tried: ext\oci8_19 (The specified module could not be found), ext\php_oci8_19.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 13:09:16 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'pdo_firebird' (tried: ext\pdo_firebird (The specified module could not be found), ext\php_pdo_firebird.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 13:09:16 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'pdo_oci' (tried: ext\pdo_oci (The specified module could not be found), ext\php_pdo_oci.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 13:09:16 UTC] PHP Warning:  file_get_contents(): open_basedir restriction in effect. File(../data/countryBorders.geo.json) is not within the allowed path(s): (“C:\inetpub\wwwroot”) in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 2
+[19-Aug-2021 13:09:16 UTC] PHP Warning:  file_get_contents(../data/countryBorders.geo.json): Failed to open stream: Operation not permitted in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 2
+[19-Aug-2021 13:09:16 UTC] PHP Warning:  Attempt to read property "features" on null in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 4
+[19-Aug-2021 13:09:16 UTC] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($var) must be of type Countable|array, null given in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php:8
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 8
+[19-Aug-2021 13:32:10 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'oci8_12c' (tried: ext\oci8_12c (The specified module could not be found), ext\php_oci8_12c.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 13:32:10 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'oci8_19' (tried: ext\oci8_19 (The specified module could not be found), ext\php_oci8_19.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 13:32:10 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'pdo_firebird' (tried: ext\pdo_firebird (The specified module could not be found), ext\php_pdo_firebird.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 13:32:10 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'pdo_oci' (tried: ext\pdo_oci (The specified module could not be found), ext\php_pdo_oci.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 13:32:10 UTC] PHP Warning:  file_get_contents(): open_basedir restriction in effect. File(../data/countryBorders.geo.json) is not within the allowed path(s): (“C:\inetpub\wwwroot”) in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 2
+[19-Aug-2021 13:32:10 UTC] PHP Warning:  file_get_contents(../data/countryBorders.geo.json): Failed to open stream: Operation not permitted in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 2
+[19-Aug-2021 13:32:10 UTC] PHP Warning:  Attempt to read property "features" on null in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 4
+[19-Aug-2021 13:32:10 UTC] PHP Fatal error:  Uncaught TypeError: sizeof(): Argument #1 ($var) must be of type Countable|array, null given in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php:8
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 8
+[19-Aug-2021 15:31:45 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'oci8_12c' (tried: ext\oci8_12c (The specified module could not be found), ext\php_oci8_12c.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 15:31:45 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'oci8_19' (tried: ext\oci8_19 (The specified module could not be found), ext\php_oci8_19.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 15:31:45 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'pdo_firebird' (tried: ext\pdo_firebird (The specified module could not be found), ext\php_pdo_firebird.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 15:31:45 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'pdo_oci' (tried: ext\pdo_oci (The specified module could not be found), ext\php_pdo_oci.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 15:31:45 UTC] PHP Warning:  file_get_contents(): open_basedir restriction in effect. File(../data/countryBorders.geo.json) is not within the allowed path(s): (“C:\inetpub\wwwroot”) in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 2
+[19-Aug-2021 15:31:45 UTC] PHP Warning:  file_get_contents(../data/countryBorders.geo.json): Failed to open stream: Operation not permitted in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 2
+[19-Aug-2021 15:31:45 UTC] PHP Warning:  Attempt to read property "features" on null in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 4
+[19-Aug-2021 15:31:45 UTC] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($var) must be of type Countable|array, null given in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php:8
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\gazetteer\libs\php\getCountries.php on line 8
+[19-Aug-2021 15:32:10 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'oci8_12c' (tried: ext\oci8_12c (The specified module could not be found), ext\php_oci8_12c.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 15:32:10 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'oci8_19' (tried: ext\oci8_19 (The specified module could not be found), ext\php_oci8_19.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 15:32:10 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'pdo_firebird' (tried: ext\pdo_firebird (The specified module could not be found), ext\php_pdo_firebird.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 15:32:10 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'pdo_oci' (tried: ext\pdo_oci (The specified module could not be found), ext\php_pdo_oci.dll (The specified module could not be found)) in Unknown on line 0
+[19-Aug-2021 15:32:10 UTC] PHP Warning:  Undefined variable $countries in C:\xampp\htdocs\gazetteer\libs\php\tempCodeRunnerFile.php on line 2
+[19-Aug-2021 15:32:10 UTC] PHP Warning:  foreach() argument must be of type array|object, null given in C:\xampp\htdocs\gazetteer\libs\php\tempCodeRunnerFile.php on line 2

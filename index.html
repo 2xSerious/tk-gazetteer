@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>The Gazetteer</title>
+    <meta name="description" content="" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link rel="stylesheet" href="libs/css/reset.css" />
+    <link rel="stylesheet" href="./libs/css/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+    <link
+      rel="stylesheet"
+      href="./node_modules/leaflet-easybutton/src/easy-button.css"
+    />
+    <link rel="stylesheet" href="./node_modules/leaflet.markercluster/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="./node_modules/leaflet.extramarkers/dist/css/leaflet.extra-markers.min.css" />
+    <link rel="stylesheet" href="./libs/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="node_modules/bootstrap-icons/font/bootstrap-icons.css"
+    />
+
+    
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+    <!-- Animated collapse button -->
+    
+      <div class="spinner-border" role="status" id="loading">
+        <div class="sr-only"></div>
+      </div>
+    
+    
+      <div id="btn-chevron-down">
+        <button
+            id="btn-down"
+          class="btn btn-default float-end"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseExample"
+          aria-expanded="false"
+          aria-controls="collapseExample"
+        >
+          <img
+            class="chevron-down"
+            src="./node_modules/bootstrap-icons/icons/chevron-compact-down.svg"
+            alt="Bootstrap"
+            width="32"
+            height="32"
+          />
+        </button>
+      </div>
+
+      <!-- Select2  -->
+      <div class="collapse" id="collapseExample">
+        <select name="countries" id="slCountries">
+          <option value="0" disabled selected>Select a country</option>
+        </select>
+      </div>
+      <!-- Info button -->
+      <button class="btn float-start" type="button" id="info-circle-fill">
+        <i class="bi bi-info-circle-fill" style="font-size: 1.5rem"></i>
+      </button>
+
+      <div class="card position-absolute" id="card">
+        <span id="close"
+          ><img
+            class="chevron-down"
+            src="./node_modules/bootstrap-icons/icons/x.svg"
+            alt="Bootstrap"
+            width="32"
+            height="32"
+        /></span>
+
+        <!-- Card Country Info -->
+        <div class="card-header" id="country-info">
+          <h2 id="country-name"></h2>
+          <img id="country-flag" src="" alt="flag" />
+        </div>
+        <div class="card-body">
+          <table class="table">
+            <tr>
+              <th scope="row">Capital</th>
+              <td id="capital"></td>
+            </tr>
+            <tr>
+              <th scope="row">Population</th>
+              <td id="population"></td>
+            </tr>
+            <tr>
+              <th scope="row">Time Zone</th>
+              <td id="time-zone"></td>
+            </tr>
+            <tr>
+              <th scope="row">Currency</th>
+              <td id="currency"></td>
+            </tr>
+          </table>
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button id="btn-weather" type="button" class="btn btn-secondary">
+              <i class="bi bi-cloud-sun" style="font-size: 1.2rem"></i>Weather
+            </button>
+            <!-- <button type="button" class="btn btn-secondary">Middle</button>
+            <button type="button" class="btn btn-secondary">Right</button> -->
+          </div>
+        </div>
+      </div>
+      <!-- Weather -->
+      <div id="weather-container" class="weather-container">
+        <!-- <span class="weather-div-close"><i class="bi bi-x"></i></span> -->
+        <div id="inner" class="inner">
+          <span class="weather-div-close"
+            ><i class="bi bi-x" style="font-size: 1.2rem"></i
+          ></span>
+          <h5 class="" id="weather-title"></h5>
+          <div>
+            <img id="weather-icon" src="" alt="weather-icon" />
+          </div>
+          <h2 id="weather-temp"></h2>
+          <p class="" id="weather-text"></p>
+        </div>
+        <div id="forecast" class="forecast">
+            <table id="forecast-table">
+                <thead>
+                    <tr id="fc-table-head"></tr>
+                </thead>
+                <tbody>
+                    <tr id="fc-icon"></tr>
+                    <tr id="fc-temp"></tr>
+                </tbody>
+            </table>
+        </div>
+      </div>
+      
+      <!-- Overlay -->
+      <div id="overlay"></div>
+      <!-- Map -->
+      <div id="mapid"></div>
+    
+    <script
+      type="text/javascript"
+      src="./libs/js/jquery-3.6.0.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="./libs/js/jquery-ui.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="libs/js/select2.min.js"
+      async
+      defer
+    ></script>
+    <script
+    src="./node_modules/leaflet/dist/leaflet.js"
+  ></script>
+    <script
+      src="./node_modules/leaflet-easybutton/src/easy-button.js"
+
+    ></script>
+     
+    <script type="text/javascript" src="./libs/js/map.js" async defer></script>
+    <script type="text/javascript" src="./node_modules/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+    <script type="text/javascript" src="./node_modules/leaflet.extramarkers/dist/js/leaflet.extra-markers.min.js"></script>
+    <script
+      type="text/javascript"
+      src="./libs/js/bootstrap.min.js"
+      async
+      defer
+    ></script>
+    <script
+      type="text/javascript"
+      src="./libs/js/script.js"
+    ></script>
+    
+  </body>
+</html>
