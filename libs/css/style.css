@@ -87,7 +87,7 @@ body,
 .weather-container {
   position: absolute;
   background-color: white;
-  max-width: 500px;
+  max-width: 550px;
   height: 0px;
   opacity: 0;
   top: 20%;
@@ -102,6 +102,12 @@ body,
   transition-property: opacity, height;
   overflow: hidden;
 }
+.forecast {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
 .inner {
   display: flex;
   flex-direction: column;
@@ -122,9 +128,7 @@ body,
   height: auto;
   opacity: 1;
 }
-.forecast {
-    overflow: scroll;
-}
+
 
 #overlay {
   display: none;
@@ -137,3 +141,10 @@ body,
   opacity: .9;
   background: rgb(213, 213, 213);
 }
+
+@media screen and (max-width: 500px) {
+    .forecast {
+        overflow: scroll;
+    }
+}
+    

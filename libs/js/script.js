@@ -105,12 +105,13 @@ function getCountryBorder() {
       mymap.flyToBounds(flyto, { duration: 1 ,easeLinearity: 0.75 });
       //   console.log(bounds);
       getCountryInfo(countryCode);
+      getWikipedia(north, south, east, west);
     },
     complete: function () {
       var position = $(".select2-container").offset();
       $(".card").animate({ left: 5, right: position.right }, 1000);
       countryBool = true;
-      getWikipedia(north, south, east, west);
+      
     },
     error: function (request, status, error) {
       alert(request.responseText);
@@ -168,17 +169,17 @@ function getCountryInfo(countryCode) {
         $('#fc-icon').empty();
         $('#fc-temp').empty();
         for (let i = 0; i < listArr.length; i++) {
-            let elementDt = listArr[i]['dt_txt'];
+            var elementDt = listArr[i]['dt_txt'];
             
-            if (elementDt.substring(11) == "12:00:00"){
-                console.log("Date: " + listArr[i]['dt_txt']);
-                let today = new Date();
-                let d = new Date(elementDt.substring(0,10));
-                let day = days[d.getUTCDay()];
-                let icon = listArr[i]['weather'][0]['icon'];
-                let temp = Math.round(listArr[i]['main']['temp']);
+            if (elementDt.substring(11) == "21:00:00"){
+                // console.log("Date: " + listArr[i]['dt_txt']);
+                var today = new Date();
+                var d = new Date(elementDt.substring(0,10));
+                var day = days[d.getUTCDay()];
+                var temp = Math.round(listArr[i]['main']['temp']);
+                var icon = listArr[i]['weather'][0]['icon'];
                 
-                if (today.getUTCDate() === d.getUTCDate()){
+                if (today.getUTCDate() === d.getUTCDate() ){
                     let imgUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`
                     $("#weather-icon").attr("src", imgUrl);
                     $("#weather-temp").html(temp + "&#8451");
@@ -209,6 +210,7 @@ function getWikipedia(south, north, east, west) {
   $.ajax({
     url: "./libs/php/getWikipedia.php",
     dataType: "json",
+    async: false,
     data: {
       south: south,
       north: north,
@@ -218,9 +220,12 @@ function getWikipedia(south, north, east, west) {
     success: function (result) {
       console.log(result);
       let arr = result.entry;
+      if (result.entry !== null){
+        markersArray = [];
       arr.forEach((element) => {
         markersArray.push(element);
       });
+    }
       console.log(markersArray);
     },
     complete: createMarkers,
