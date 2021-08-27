@@ -117,13 +117,10 @@ body,
   overflow: hidden;
 }
 .forecast {
-    display: flex;
-    justify-content: center;
     padding-bottom: 10px;
     overflow: auto;
 }
 #forecast-table {
-    display: table-column;
     table-layout: fixed;
     width: 100%;
 }
@@ -166,6 +163,8 @@ body,
 }
 
  
-/* @media screen and (min-width: 500px) {
-    
-} */
+@media screen and (max-width: 500px) {
+    #forecast-table {
+        display: block;
+    }
+}

@@ -106,6 +106,7 @@ function getCountryBorder() {
       south = bounds.getSouth();
       east = bounds.getEast();
       west = bounds.getWest();
+      console.log(north, south);
       $(".card").animate({ left: 5, right: position.right }, 1000);
       countryBool = true;
 
@@ -213,7 +214,7 @@ function getWikipedia(south, north, east, west) {
     success: function (result) {
       console.log(result);
       let arr = result.entry;
-      if (result.entry !== null) {
+      if (arr !== undefined) {
         markersArray = [];
         arr.forEach((element) => {
           markersArray.push(element);
