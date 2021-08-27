@@ -105,10 +105,10 @@ body,
   height: 0px;
   opacity: 0;
   top: 20%;
-  margin-left: 5px;
-  margin-right: 5px;
-  left: 0;
-  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  left: 5px;
+  right: 5px;
   text-align: center;
   z-index: 1001;
   border-radius: 3%;
