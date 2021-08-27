@@ -178,7 +178,7 @@ function getCountryInfo(countryCode) {
               var icon = listArr[i]["weather"][0]["icon"];
 
               if (today.getUTCDate() === d.getUTCDate()) {
-                let imgUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+                let imgUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
                 $("#weather-icon").attr("src", imgUrl);
                 $("#weather-temp").html(temp + "&#8451");
                 $("#weather-text").html(
@@ -187,7 +187,7 @@ function getCountryInfo(countryCode) {
               }
               $("#fc-table-head").append(`<th>${day}</th>`);
               $("#fc-icon").append(
-                `<td><img src="http://openweathermap.org/img/wn/${icon}@2x.png" alt="weather icon"></td>`
+                `<td><img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="weather icon"></td>`
               );
               $("#fc-temp").append(`<td>${temp}&#8451</td>`);
             }
