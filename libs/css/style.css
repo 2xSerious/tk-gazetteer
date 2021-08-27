@@ -47,7 +47,7 @@ body,
     left: 0;
     right: 0;
 }
-.btn[aria-expanded="true"] .chevron-down {
+.btn[aria-expanded="false"] .chevron-up {
   transform: rotate(180deg);
 }
 .bi.bi-cloud-sun::before {
@@ -55,7 +55,7 @@ body,
 }
 
 
-.chevron-down {
+.chevron-up {
   transition: all 0.3s ease;
 }
 #btn-chevron-down {
