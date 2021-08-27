@@ -29,15 +29,19 @@
       rel="stylesheet"
       href="./node_modules/leaflet-easybutton/src/easy-button.css"
     />
-    <link rel="stylesheet" href="./node_modules/leaflet.markercluster/dist/MarkerCluster.css" />
-    <link rel="stylesheet" href="./node_modules/leaflet.extramarkers/dist/css/leaflet.extra-markers.min.css" />
+    <link
+      rel="stylesheet"
+      href="./node_modules/leaflet.markercluster/dist/MarkerCluster.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./node_modules/leaflet.extramarkers/dist/css/leaflet.extra-markers.min.css"
+    />
     <link rel="stylesheet" href="./libs/css/bootstrap.min.css" />
     <link
       rel="stylesheet"
       href="node_modules/bootstrap-icons/font/bootstrap-icons.css"
     />
-
-    
   </head>
   <body>
     <!--[if lt IE 7]>
@@ -47,54 +51,54 @@
       </p>
     <![endif]-->
     <!-- Animated collapse button -->
-    
-      <div class="spinner-border" role="status" id="loading">
-        <div class="sr-only"></div>
-      </div>
-    
-    
-      <div id="btn-chevron-down">
-        <button
-            id="btn-down"
-          class="btn btn-default float-end"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#collapseExample"
-          aria-expanded="false"
-          aria-controls="collapseExample"
-        >
-          <img
-            class="chevron-down"
-            src="./node_modules/bootstrap-icons/icons/chevron-compact-down.svg"
-            alt="Bootstrap"
-            width="32"
-            height="32"
-          />
-        </button>
-      </div>
 
-      <!-- Select2  -->
-      <div class="collapse" id="collapseExample">
-        <select name="countries" id="slCountries">
-          <option value="0" disabled selected>Select a country</option>
-        </select>
-      </div>
-      <!-- Info button -->
-      <button class="btn float-start" type="button" id="info-circle-fill">
+    <div class="spinner-border" role="status" id="loading">
+      <div class="sr-only"></div>
+    </div>
+
+    <div id="btn-chevron-down">
+      <button
+        id="btn-down"
+        class="btn btn-default float-end"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseExample"
+        aria-expanded="false"
+        aria-controls="collapseExample"
+      >
+        <img
+          class="chevron-down"
+          src="./node_modules/bootstrap-icons/icons/chevron-compact-down.svg"
+          alt="Bootstrap"
+          width="32"
+          height="32"
+        />
+      </button>
+    </div>
+
+    <!-- Select2  -->
+    <div class="collapse" id="collapseExample">
+      <select name="countries" id="slCountries">
+        <option value="0" disabled selected>Select a country</option>
+      </select>
+    </div>
+    <!-- Info button -->
+    <button class="btn float-start" type="button" id="info-circle-fill">
         <i class="bi bi-info-circle-fill" style="font-size: 1.5rem"></i>
       </button>
 
-      <div class="card position-absolute" id="card">
-        <span id="close"
-          ><img
-            class="chevron-down"
-            src="./node_modules/bootstrap-icons/icons/x.svg"
-            alt="Bootstrap"
-            width="32"
-            height="32"
-        /></span>
+    <div class="card" id="card">
+      <span id="close"
+        ><img
+          class="chevron-down"
+          src="./node_modules/bootstrap-icons/icons/x.svg"
+          alt="Bootstrap"
+          width="32"
+          height="32"
+      /></span>
 
-        <!-- Card Country Info -->
+      <!-- Card Country Info -->
+      <div class="card-container">
         <div class="card-header" id="country-info">
           <h2 id="country-name"></h2>
           <img id="country-flag" src="" alt="flag" />
@@ -125,9 +129,9 @@
           </div>
         </div>
       </div>
-      <!-- Weather -->
-      <div id="weather-container" class="weather-container">
-        <!-- <span class="weather-div-close"><i class="bi bi-x"></i></span> -->
+    </div>
+    <!-- Weather -->
+    <div id="weather-container" class="weather-container">
         <div id="inner" class="inner">
           <span class="weather-div-close"
             ><i class="bi bi-x" style="font-size: 1.2rem"></i
@@ -151,47 +155,37 @@
             </table>
         </div>
       </div>
-      
-      <!-- Overlay -->
-      <div id="overlay"></div>
-      <!-- Map -->
-      <div id="mapid"></div>
-    
-    <script
-      type="text/javascript"
-      src="./libs/js/jquery-3.6.0.min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="./libs/js/jquery-ui.min.js"
-    ></script>
+
+    <!-- Overlay -->
+    <div id="overlay"></div>
+    <div id="mapid"></div>
+
+    <script type="text/javascript" src="./libs/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="./libs/js/jquery-ui.min.js"></script>
     <script
       type="text/javascript"
       src="libs/js/select2.min.js"
       async
       defer
     ></script>
-    <script
-    src="./node_modules/leaflet/dist/leaflet.js"
-  ></script>
-    <script
-      src="./node_modules/leaflet-easybutton/src/easy-button.js"
+    <script src="./node_modules/leaflet/dist/leaflet.js"></script>
+    <script src="./node_modules/leaflet-easybutton/src/easy-button.js"></script>
 
-    ></script>
-     
     <script type="text/javascript" src="./libs/js/map.js" async defer></script>
-    <script type="text/javascript" src="./node_modules/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
-    <script type="text/javascript" src="./node_modules/leaflet.extramarkers/dist/js/leaflet.extra-markers.min.js"></script>
+    <script
+      type="text/javascript"
+      src="./node_modules/leaflet.markercluster/dist/leaflet.markercluster.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="./node_modules/leaflet.extramarkers/dist/js/leaflet.extra-markers.min.js"
+    ></script>
     <script
       type="text/javascript"
       src="./libs/js/bootstrap.min.js"
       async
       defer
     ></script>
-    <script
-      type="text/javascript"
-      src="./libs/js/script.js"
-    ></script>
-    
+    <script type="text/javascript" src="./libs/js/script.js"></script>
   </body>
 </html>

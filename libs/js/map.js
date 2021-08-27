@@ -1,5 +1,6 @@
 var mymap = L.map("mapid", {
   zoomControl: false,
+  tap: false
 });
 var popup = L.popup();
 var clocation, mrk;
@@ -15,18 +16,10 @@ var clickMarker = L.ExtraMarkers.icon({
   svg: false,
 });
 
-L.tileLayer(
-  "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
-  {
-    attribution:
-      'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
-    id: "mapbox/streets-v11",
-    tileSize: 512,
-    zoomOffset: -1,
-    accessToken:
-      "pk.eyJ1IjoiMnhzZXJpb3VzIiwiYSI6ImNrc2hham04YzFhdzMydm51bWVvbXZ4dzAifQ.vy1cFQy8-UJlNAMvLTF8TA",
-  }
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+	maxZoom: 19,
+	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}
 ).addTo(mymap);
 L.control.scale().addTo(mymap);
 L.control
