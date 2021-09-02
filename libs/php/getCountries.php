@@ -20,6 +20,8 @@
         return $key1[0] <=> $key2[0];
     });
     
-    print_r(json_encode($countriesArray));
+    $encode = json_encode($countriesArray);
+    echo $encode;
+    header('Content-Type: application/json; charset=UTF-8');
     
 ?>
