@@ -44,7 +44,7 @@ var myloc = L.ExtraMarkers.icon({
   number: "",
   svg: false,
 });
-
+ 
 var compassBtn = L.easyButton({
   id: "compass-btn",
   position: "bottomright",
@@ -83,17 +83,38 @@ function onLocationFound(e) {
       lng: lng,
     },
     success: function (data) {
+  
       // console.log(data['results'][0]['formatted']);
       address = data["results"][0]["formatted"];
       popup.setContent(address);
       marker.bindPopup(popup);
+      countryBordersLocation(lat, lng);
     },
     error: function (request, status, error) {
       alert(request.responseText);
     },
   });
-}
 
+  
+}
+function countryBordersLocation(lat, lng) {
+  $.ajax({
+    url: "./libs/php/getCurrentLocation.php",
+    dataType: "json",
+    data: {
+      lat: lat,
+      lng: lng,
+    },
+    success: function (result) {
+      console.log(result);
+      var ccode = result['countryCode'];
+      $('#slCountries').val(ccode).change()
+    },
+    error: function (request, status, error) {
+      alert(request.responseText);
+    }
+  })
+}
 function onMapClick(e) {
   var address;
   var location = e.latlng;

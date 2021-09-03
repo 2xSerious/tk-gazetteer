@@ -4,6 +4,7 @@ var countryBool;
 var north, south, east, west;
 var markersArray = [];
 var days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+var webcamMarkers = L.layerGroup();
 var markers = L.markerClusterGroup({
   iconCreateFunction: function (cluster) {
     return L.divIcon({ html: "<b> " + cluster.getChildCount() + " </b>" });
@@ -20,6 +21,17 @@ var customMarker = L.ExtraMarkers.icon({
   number: "",
   svg: false,
 });
+var webcamMarker = L.ExtraMarkers.icon({
+  shape: "square",
+  markerColor: "cyan",
+  prefix: "bi bi-camera-video",
+  icon: "bi bi-camera-video",
+  iconColor: "#fff",
+  iconRotate: 0,
+  extraClasses: "",
+  number: "",
+  svg: false,
+})
 
 $(document).ready(function () {
   $("#loading").fadeOut("slow");
@@ -123,8 +135,7 @@ function getCountryBorder() {
 }
 
 function getCountryInfo(countryCode) {
-  var countryLan;
-  var countryLng;
+  
   $.ajax({
     url: "./libs/php/getCountryInfo.php",
     dataType: "json",
@@ -135,13 +146,16 @@ function getCountryInfo(countryCode) {
       console.log(result);
       countryLan = result.latlng[0];
       countryLng = result.latlng[1];
+      var populationFormat = result["population"].toLocaleString('en');
       $("#capital").html(result["capital"]);
       $("#country-name").html(result["name"]);
       $("#country-flag").attr("src", result["flag"]);
-      $("#population").html(result["population"]);
+      $("#population").html(populationFormat);
       $("#time-zone").html(result["timezones"][0]);
       $("#currency").html(result["currencies"][0]["name"]);
       getWikipedia(countryCode);
+      getWebcams(countryCode);
+      getNews(countryCode);
     },
     complete: function (result) {
       // console.log(result);
@@ -224,6 +238,62 @@ function getWikipedia(south, north, east, west) {
     },
     complete: createMarkers,
   });
+}
+
+function getNews(countryCode) {
+  $.ajax({
+    url: "./libs/php/getNews.php",
+    dataType: "json",
+    data: {
+      countryCode: countryCode
+    },
+    success: function (data) {
+      let results = data.results;
+      
+      results.forEach(result => {
+        let artImg = result.image_url ? result.image_url : "./img/no-imag.jpg";
+        $('#news-inner').append(
+          `<a href="${result.link}" target="_blank"><div class="news-article">
+            <h2>${result.title}</h2>
+            <p>${result.pubDate}</p>
+            <img src="${artImg}" alt="article-image" />
+          </div></a>`
+        )
+      })
+    }
+  })
+}
+
+function getWebcams(ccode) {
+  if (webcamMarkers != undefined) {
+    webcamMarkers.clearLayers();
+  }
+  
+  $.ajax({
+    url: './libs/php/getWebcams.php',
+    dataType: 'json',
+    data: {
+      countrCode: ccode,
+    },
+    success: function (data) {
+      let webArr = data.result['webcams'];
+      console.log(webArr);
+
+      webArr.forEach(element => {
+        var lat = element.location['latitude'];
+        var lng = element.location['longitude'];
+        console.log(element.player['live']['embed'])
+        let content = `<h3>${element.location.city}</h3><iframe src="${element.player['day']['embed']}?autoplay=1" width="200vw"></iframe>`;
+        webcamMarkers.addLayer(
+          L.marker([lat,lng], {icon: webcamMarker}).bindPopup(content)
+        )
+      } )
+      console.log(webcamMarkers);
+      mymap.addLayer(webcamMarkers);
+
+    }
+  });
+  
 }
 
 function createMarkers() {

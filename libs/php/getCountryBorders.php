@@ -8,8 +8,9 @@ foreach ($countries as $obj) {
     // var_dump($obj->properties);
 
     if ($obj->properties->iso_a2 == $_GET['countryCode']) {
-        $countryBorders = $obj->geometry;
+        $countryBorders = $obj;
     }
 }
+ 
 print_r(json_encode($countryBorders));
 ?>

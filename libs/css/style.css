@@ -1,6 +1,7 @@
 body {
   padding: 0;
   margin: 0;
+  
 }
 html,
 body,
@@ -50,7 +51,15 @@ body,
 .btn[aria-expanded="false"] .chevron-up {
   transform: rotate(180deg);
 }
+
+.btn-group {
+  width: 100%;
+}
+
 .bi.bi-cloud-sun::before {
+  padding-right: 4px;
+}
+.bi.bi-newspaper::before {
   padding-right: 4px;
 }
 
@@ -149,7 +158,63 @@ body,
   opacity: 1;
 }
 
+.news-container {
+  position: absolute;
+  background-color: white;
+  max-width: 80vw;
+  height: 90%;
+  opacity: 1; /* subject to change */
+  top: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  left: 5px;
+  right: 5px;
+  text-align: center;
+  z-index: 1001;
+  border-radius: 3%;
+ 
+}
+.news-inner {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  height: 95%;
+  overflow: scroll;
+}
+news-inner a {
+  text-decoration: none;
+  color: inherit;
+}
+.news-article {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+  margin: 1em 0;
+}
+.news-article:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+.news-article h2{
+  text-align: left;
+  padding-left: 2vw;
+}
 
+.news-article p {
+  float: right;
+  opacity: 0.7;
+  font-size: 0.7em;
+  padding-right: 2vw;
+}
+.news-article img {
+  width: 100%;
+}
+.news-div-close {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 0.7em;
+  padding-top: 0.6em;
+}
+.news-div-close:hover {
+  cursor: pointer;
+}
 #overlay {
   display: none;
   position: fixed;
