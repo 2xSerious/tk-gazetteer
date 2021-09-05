@@ -61,11 +61,27 @@ var compassBtn = L.easyButton({
         }
         map.flyTo(clocation, 14, {duration: 0.5, easeLinearity: 0.75});
       },
-      icon: '<i class="bi bi-compass" style="font-size: 1.2rem"></i>',
+      icon: '<i class="bi bi-vinyl" style="font-size: 1.2rem"></i>',
     },
   ],
 });
 compassBtn.addTo(mymap);
+
+var covidBtn = L.easyButton ({
+  id: "covid-btn",
+  position: "bottomright",
+  leafletClasses: true,
+  states: [
+    {
+      stateName: "get-covid-data",
+      onClick: function (btn, map) {
+        map.flyToBounds(flyto, { duration: 1, easeLinearity: 0.75 });
+      },
+      icon: '<i class="bi bi-bug-fill" style="font-size: 1.2rem"></i>',
+    },
+  ],
+});
+covidBtn.addTo(mymap);
 
 function onLocationFound(e) {
   var address;
@@ -115,6 +131,7 @@ function countryBordersLocation(lat, lng) {
     }
   })
 }
+
 function onMapClick(e) {
   var address;
   var location = e.latlng;

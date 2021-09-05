@@ -1,6 +1,7 @@
 var countryCode;
 var countryBorder;
-var countryBool;
+var flyto;
+var countryBool =false;
 var north, south, east, west;
 var markersArray = [];
 var days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
@@ -47,6 +48,15 @@ $(document).ready(function () {
     countryBool = false;
   });
 
+  $('#covid-btn').click(function () {
+    $('#covid-container').addClass('covid-unhide');
+    $('#overlay').show();
+  });
+  $('.covid-div-close').click(function () {
+    $('#covid-container').removeClass('covid-unhide');
+    $('#overlay').hide();
+  })
+
   $("#info-circle-fill").click(toggleDiv);
   $(".weather-div-close").click(function () {
     $("#weather-container").toggleClass("weather-div-hidden");
@@ -58,7 +68,18 @@ $(document).ready(function () {
     $("#overlay").show();
     // console.log("open");
   });
-  $("#compass-btn").click(clearMap);
+  $(".news-div-close").click(function () {
+    $("#news-container").removeClass("news-div-hidden");
+    $("#overlay").hide();
+  });
+  $("#btn-news").click(function () {
+    $("#news-container").addClass("news-div-hidden");
+    $("#overlay").show();
+  });
+  
+  $("#compass-btn").click(function() {
+    clearMap();
+  });
 });
 
 function getCountryList() {
@@ -156,6 +177,7 @@ function getCountryInfo(countryCode) {
       getWikipedia(countryCode);
       getWebcams(countryCode);
       getNews(countryCode);
+      getCovid(countryCode);
     },
     complete: function (result) {
       // console.log(result);
@@ -249,17 +271,45 @@ function getNews(countryCode) {
     },
     success: function (data) {
       let results = data.results;
-      
+      $("#news-inner").empty();
       results.forEach(result => {
         let artImg = result.image_url ? result.image_url : "./img/no-imag.jpg";
         $('#news-inner').append(
-          `<a href="${result.link}" target="_blank"><div class="news-article">
+          `<div class="news-article">
+          <a href="${result.link}" target="_blank">
             <h2>${result.title}</h2>
             <p>${result.pubDate}</p>
             <img src="${artImg}" alt="article-image" />
-          </div></a>`
+            </a>
+          </div>`
         )
       })
+    }
+  })
+}
+
+function getCovid(countrCode) {
+  $.ajax({
+    url: "./libs/php/getCovid.php",
+    dataType: "json",
+    data: {
+      countryCode: countryCode,
+    },
+    success: function(result) {
+      
+      let data = result.data;
+      let date = new Date(data.updated_at);
+      let dateUpd = date.toDateString();
+      let latest = data.latest_data;
+      console.log(latest);
+      let recoveryRate = latest.calculated.recovery_rate;
+      $('#covid-country').html(data.name);
+      $('#covid-updated').html(dateUpd);
+      $('#covid-confirmed').html(latest.confirmed.toLocaleString('en'));
+      $('#covid-recovered').html(latest.recovered.toLocaleString('en'));
+      $('#covid-deaths').html(latest.deaths.toLocaleString('en'));
+      $('#covid-critical').html(latest.critical.toLocaleString('en'));
+      $('#covid-recovery-rate').html(Math.round(recoveryRate) + "%");
     }
   })
 }
@@ -283,7 +333,7 @@ function getWebcams(ccode) {
         var lat = element.location['latitude'];
         var lng = element.location['longitude'];
         console.log(element.player['live']['embed'])
-        let content = `<h3>${element.location.city}</h3><iframe src="${element.player['day']['embed']}?autoplay=1" width="200vw"></iframe>`;
+        let content = `<h3>${element.location.city}</h3><iframe src="${element.player['day']['embed']}?autoplay=1" width="300vw"></iframe>`;
         webcamMarkers.addLayer(
           L.marker([lat,lng], {icon: webcamMarker}).bindPopup(content)
         )
@@ -331,18 +381,22 @@ function clearMap() {
   if (countryBool) {
     $(".card").animate({ left: -999 }, 500);
     $("#info-circle-fill").hide("slide", { direction: "left" }, 500);
-    countryBool = false;
-    if (countryBorder !== null) {
+    if (countryBorder != null) {
       countryBorder.clearLayers();
       markers.clearLayers();
+      webcamMarkers.clearLayers();
     }
+    countryBool = false;
     $("#slCountries").val("0").trigger("change");
   } else {
     $("#info-circle-fill").hide("slide", { direction: "left" }, 500);
-    if (countryBorder !== null) {
+    if (countryBorder != null) {
       countryBorder.clearLayers();
       markers.clearLayers();
+      webcamMarkers.clearLayers();
     }
     $("#slCountries").val("0").trigger("change");
   }
+    mymap.locate({ setView: true, maxZoom: 15, });
+
 }

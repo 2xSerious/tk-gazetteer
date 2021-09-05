@@ -134,6 +134,7 @@
         </div>
       </div>
     </div>
+
     <!-- Weather -->
     <div id="weather-container" class="weather-container">
         <div id="inner" class="inner">
@@ -170,7 +171,45 @@
          
         </div>
       </div>
-
+      <!-- Covid -->
+      <div id="covid-container" class="covid-container" >
+        <span class="covid-div-close"
+            ><i class="bi bi-x" style="font-size: 1.2rem"></i
+          ></span>
+          <h3>Covid Information</h3>
+          <h2 id="covid-country"></h2>
+          <span id="covid-updated"></span>
+          <table class="table table-sm" id="covid-table">
+            <thead>
+              <tr>
+                <th scope="col">Data</th>
+                <th scope="col">Numbers</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="table-active">
+                <th scope="row" >Confirmed</th>
+                <td id="covid-confirmed"></td>
+              </tr>
+              <tr class="table-success">
+                <th scope="row">Recovered</th>
+                <td id="covid-recovered"></td>
+              </tr>
+              <tr class="table-danger">
+                <th scope="row">Deaths</th>
+                <td id="covid-deaths">Larry the Bird</td>
+              </tr>
+              <tr class="table-warning">
+                <th scope="row">Critical</th>
+                <td id="covid-critical"></td>
+              </tr>
+              <tr class="table-info">
+                <th scope="row">Recovery Rate</th>
+                <td id="covid-recovery-rate"></td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
     <!-- Overlay -->
     <div id="overlay"></div>
     <div id="mapid"></div>
@@ -201,6 +240,6 @@
       async
       defer
     ></script>
-    <script type="text/javascript" src="./libs/js/script.js"></script>
+    <script type="text/javascript" src="./libs/js/script.js" async defer></script>
   </body>
 </html>

@@ -3,6 +3,7 @@ body {
   margin: 0;
   
 }
+
 html,
 body,
 #mapid {
@@ -37,7 +38,7 @@ body,
     display: flex;
     justify-content: space-between;
   }
-#compass-btn {
+#compass-btn, #covid-btn {
     
     padding: 0;
 }
@@ -161,9 +162,9 @@ body,
 .news-container {
   position: absolute;
   background-color: white;
-  max-width: 80vw;
-  height: 90%;
-  opacity: 1; /* subject to change */
+  max-width: 50vw;
+  height: 0px;
+  opacity: 0; /* subject to change */
   top: 5%;
   margin-left: auto;
   margin-right: auto;
@@ -172,7 +173,12 @@ body,
   text-align: center;
   z-index: 1001;
   border-radius: 3%;
- 
+  transition: all 0.5s linear;
+  transition-property: opacity, height;
+}
+.news-div-hidden {
+  height: 90%;
+  opacity: 1;
 }
 .news-inner {
   display: flex;
@@ -181,20 +187,24 @@ body,
   height: 95%;
   overflow: scroll;
 }
-news-inner a {
-  text-decoration: none;
-  color: inherit;
-}
+
 .news-article {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.8);
   margin: 1em 0;
+  border-top: 2px solid grey;
 }
-.news-article:hover {
-  background: rgba(0, 0, 0, 0.8);
-}
+
 .news-article h2{
   text-align: left;
   padding-left: 2vw;
+  
+}
+.news-article a {
+  text-decoration: none;
+  color: inherit;
+}
+.news-article a:hover {
+  color: grey;
+  opacity: 0.5;
 }
 
 .news-article p {
@@ -206,7 +216,7 @@ news-inner a {
 .news-article img {
   width: 100%;
 }
-.news-div-close {
+.news-div-close, .covid-div-close {
   display: flex;
   justify-content: flex-end;
   padding-right: 0.7em;
@@ -214,6 +224,34 @@ news-inner a {
 }
 .news-div-close:hover {
   cursor: pointer;
+}
+
+.covid-div-close:hover {
+  cursor: pointer;
+}
+
+.covid-container {
+  position: absolute;
+  background-color: white;
+  max-width: 50vw;
+  height: 0px;
+  opacity: 0;
+  top: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  left: 5px;
+  right: 5px;
+  text-align: center;
+  z-index: -1;
+  border-radius: 3%;
+  transition: all 0.5s linear;
+  transition-property: opacity, height;
+}
+
+.covid-unhide {
+  height: auto;
+  opacity: 1;
+  z-index: 1001;
 }
 #overlay {
   display: none;
@@ -231,5 +269,11 @@ news-inner a {
 @media screen and (max-width: 500px) {
     #forecast-table {
         display: block;
+    }
+    .news-container, .covid-container {
+      max-width: 300px;
+    }
+    .news-article h2 {
+      font-size: 1em;
     }
 }
