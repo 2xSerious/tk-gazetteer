@@ -56,7 +56,14 @@ $(document).ready(function () {
     $('#covid-container').removeClass('covid-unhide');
     $('#overlay').hide();
   })
-
+  $('#holiday-btn').click(function () {
+    $('#holiday-container').addClass('holiday-unhide');
+    $('#overlay').show();
+  })
+  $('.holiday-div-close').click(function () {
+    $('#holiday-container').removeClass('holiday-unhide');
+    $('#overlay').hide();
+  })
   $("#info-circle-fill").click(toggleDiv);
   $(".weather-div-close").click(function () {
     $("#weather-container").toggleClass("weather-div-hidden");
@@ -80,8 +87,9 @@ $(document).ready(function () {
   $("#compass-btn").click(function() {
     clearMap();
   });
-});
+  
 
+  });
 function getCountryList() {
   $.ajax({
     url: "./libs/php/getCountries.php",
@@ -178,6 +186,7 @@ function getCountryInfo(countryCode) {
       getWebcams(countryCode);
       getNews(countryCode);
       getCovid(countryCode);
+      getHolidays(countryCode);
     },
     complete: function (result) {
       // console.log(result);
@@ -344,6 +353,30 @@ function getWebcams(ccode) {
     }
   });
   
+}
+
+function getHolidays(countrCode) {
+  $.ajax({
+    url: "./libs/php/getHolidays.php",
+    dataType: "json",
+    data: {
+      countryCode: countryCode
+    },
+    success: function(result) {
+      $('#holiday-inner').empty();
+      result.forEach(holiday => {
+        $('#holiday-inner').append(
+          `<div class="card-holiday card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">${holiday.name}</div>
+            <div class="card-body">
+            <h5 class="card-title">${holiday.types[0]}</h5>
+            <p class="card-text"> ${holiday.date}</p>
+          </div>
+        </div>`
+        )
+      })
+    }
+  })
 }
 
 function createMarkers() {

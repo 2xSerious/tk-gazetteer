@@ -216,19 +216,17 @@ body,
 .news-article img {
   width: 100%;
 }
-.news-div-close, .covid-div-close {
+.news-div-close, .covid-div-close, .holiday-div-close {
   display: flex;
   justify-content: flex-end;
   padding-right: 0.7em;
   padding-top: 0.6em;
 }
-.news-div-close:hover {
+.news-div-close:hover , .covid-div-close:hover, .holiday-div-close:hover {
   cursor: pointer;
 }
 
-.covid-div-close:hover {
-  cursor: pointer;
-}
+
 
 .covid-container {
   position: absolute;
@@ -253,6 +251,42 @@ body,
   opacity: 1;
   z-index: 1001;
 }
+
+.holiday-container {
+  position: absolute;
+  background-color: white;
+  max-width: 50vw;
+  height: 0px;
+  opacity: 0;
+  top: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  left: 5px;
+  right: 5px;
+  text-align: center;
+  z-index: -1;
+  border-radius: 3%;
+  transition: all 0.5s linear;
+  transition-property: opacity, height;
+}
+.holiday-inner {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  height: 85%;
+  overflow: scroll;
+}
+
+.holiday-unhide {
+  height: 85%;
+  opacity: 1;
+  z-index: 1001;
+}
+
+.card-holiday {
+    width: 90%;
+    margin: 1em auto;
+}
 #overlay {
   display: none;
   position: fixed;
@@ -270,7 +304,7 @@ body,
     #forecast-table {
         display: block;
     }
-    .news-container, .covid-container {
+    .news-container, .covid-container, .holiday-container {
       max-width: 300px;
     }
     .news-article h2 {
