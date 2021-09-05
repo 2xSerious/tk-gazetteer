@@ -91,7 +91,7 @@ function getCountryList() {
       result.forEach((element) => {
         $("#slCountries")
           .append(`<option value="${element[1]}"> ${element[0]} </option>`)
-          .select2();
+          
       });
     },
     error: function (request, status, error) {
@@ -131,7 +131,7 @@ function getCountryBorder() {
     },
     complete: function () {
       $("#loading").fadeOut("slow");
-      var position = $(".select2-container").offset();
+      var position = $(".select-container").offset();
       var bounds = countryBorder.getBounds();
       var southWest = bounds.getSouthWest();
       var northEast = bounds.getNorthEast();
