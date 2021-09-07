@@ -139,7 +139,7 @@ function getCountryBorder() {
     },
     complete: function () {
       $("#loading").fadeOut("slow");
-      var position = $(".select-container").offset();
+      var position = $("#slCountries").offset();
       var bounds = countryBorder.getBounds();
       var southWest = bounds.getSouthWest();
       var northEast = bounds.getNorthEast();

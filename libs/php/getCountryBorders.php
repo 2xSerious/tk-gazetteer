@@ -11,6 +11,6 @@ foreach ($countries as $obj) {
         $countryBorders = $obj;
     }
 }
- 
-print_r(json_encode($countryBorders));
+ $encode = json_encode($countryBorders);
+    echo $encode;
 ?>

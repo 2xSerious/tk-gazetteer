@@ -14,6 +14,6 @@
     $xml = simplexml_load_string($result);
     $json = json_encode($xml);
     
-    print_r($json);
+    echo $json;
 
 ?>
