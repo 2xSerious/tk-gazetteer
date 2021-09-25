@@ -1,7 +1,7 @@
 var countryCode;
 var countryBorder;
 var flyto;
-var countryBool =false;
+var countryBool = false;
 var north, south, east, west;
 var markersArray = [];
 var days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
@@ -32,7 +32,7 @@ var webcamMarker = L.ExtraMarkers.icon({
   extraClasses: "",
   number: "",
   svg: false,
-})
+});
 
 $(document).ready(function () {
   $("#loading").fadeOut("slow");
@@ -48,22 +48,22 @@ $(document).ready(function () {
     countryBool = false;
   });
 
-  $('#covid-btn').click(function () {
-    $('#covid-container').addClass('covid-unhide');
-    $('#overlay').show();
+  $("#covid-btn").click(function () {
+    $("#covid-container").addClass("covid-unhide");
+    $("#overlay").show();
   });
-  $('.covid-div-close').click(function () {
-    $('#covid-container').removeClass('covid-unhide');
-    $('#overlay').hide();
-  })
-  $('#holiday-btn').click(function () {
-    $('#holiday-container').addClass('holiday-unhide');
-    $('#overlay').show();
-  })
-  $('.holiday-div-close').click(function () {
-    $('#holiday-container').removeClass('holiday-unhide');
-    $('#overlay').hide();
-  })
+  $(".covid-div-close").click(function () {
+    $("#covid-container").removeClass("covid-unhide");
+    $("#overlay").hide();
+  });
+  $("#holiday-btn").click(function () {
+    $("#holiday-container").addClass("holiday-unhide");
+    $("#overlay").show();
+  });
+  $(".holiday-div-close").click(function () {
+    $("#holiday-container").removeClass("holiday-unhide");
+    $("#overlay").hide();
+  });
   $("#info-circle-fill").click(toggleDiv);
   $(".weather-div-close").click(function () {
     $("#weather-container").toggleClass("weather-div-hidden");
@@ -83,13 +83,11 @@ $(document).ready(function () {
     $("#news-container").addClass("news-div-hidden");
     $("#overlay").show();
   });
-  
-  $("#compass-btn").click(function() {
+
+  $("#compass-btn").click(function () {
     clearMap();
   });
-  
-
-  });
+});
 function getCountryList() {
   $.ajax({
     url: "./libs/php/getCountries.php",
@@ -97,9 +95,9 @@ function getCountryList() {
     success: function (result) {
       //   console.log(result);
       result.forEach((element) => {
-        $("#slCountries")
-          .append(`<option value="${element[1]}"> ${element[0]} </option>`)
-          
+        $("#slCountries").append(
+          `<option value="${element[1]}"> ${element[0]} </option>`
+        );
       });
     },
     error: function (request, status, error) {
@@ -147,7 +145,7 @@ function getCountryBorder() {
       south = bounds.getSouth();
       east = bounds.getEast();
       west = bounds.getWest();
-      console.log(north, south);
+
       $(".card").animate({ left: 5, right: position.right }, 1000);
       countryBool = true;
 
@@ -164,24 +162,24 @@ function getCountryBorder() {
 }
 
 function getCountryInfo(countryCode) {
-  
   $.ajax({
     url: "./libs/php/getCountryInfo.php",
     dataType: "json",
     data: {
       countryCode: countryCode,
     },
-    success: function (result) {
-      console.log(result);
-      countryLan = result.latlng[0];
-      countryLng = result.latlng[1];
-      var populationFormat = result["population"].toLocaleString('en');
+    success: function (data) {
+      var result = data.geonames[0];
+      var format = parseInt(result.population);
+      var populationFormat = format.toLocaleString();
+      var flag = result.countryCode.toLowerCase();
+
       $("#capital").html(result["capital"]);
-      $("#country-name").html(result["name"]);
-      $("#country-flag").attr("src", result["flag"]);
+      $("#country-name").html(result.countryName);
+      $("#country-flag").attr("src", `https://flagcdn.com/w80/${flag}.png`);
       $("#population").html(populationFormat);
-      $("#time-zone").html(result["timezones"][0]);
-      $("#currency").html(result["currencies"][0]["name"]);
+      // $("#time-zone").html(result["timezones"][0]);
+      $("#currency").html(result.currencyCode);
       getWikipedia(countryCode);
       getWebcams(countryCode);
       getNews(countryCode);
@@ -189,8 +187,7 @@ function getCountryInfo(countryCode) {
       getHolidays(countryCode);
     },
     complete: function (result) {
-      // console.log(result);
-      var json = result.responseJSON;
+      var json = result.responseJSON.geonames[0];
       var capital = json["capital"];
       // GET Weather call
       $.ajax({
@@ -202,12 +199,11 @@ function getCountryInfo(countryCode) {
         success: function (data) {
           // console.log(data);
           var obj = JSON.parse(data);
-          console.log(obj);
+
           var listArr = obj.list;
 
           $("#weather-title").html(obj.city["name"]);
 
-          console.log("Before for loop " + listArr.length);
           $("#fc-table-head").empty();
           $("#fc-icon").empty();
           $("#fc-temp").empty();
@@ -257,7 +253,6 @@ function getWikipedia(south, north, east, west) {
       west: west,
     },
     success: function (result) {
-      console.log(result);
       let arr = result.entry;
       if (arr !== undefined) {
         markersArray = [];
@@ -265,7 +260,6 @@ function getWikipedia(south, north, east, west) {
           markersArray.push(element);
         });
       }
-      console.log(markersArray);
     },
     complete: createMarkers,
   });
@@ -276,14 +270,14 @@ function getNews(countryCode) {
     url: "./libs/php/getNews.php",
     dataType: "json",
     data: {
-      countryCode: countryCode
+      countryCode: countryCode,
     },
     success: function (data) {
       let results = data.results;
       $("#news-inner").empty();
-      results.forEach(result => {
+      results.forEach((result) => {
         let artImg = result.image_url ? result.image_url : "./img/no-imag.jpg";
-        $('#news-inner').append(
+        $("#news-inner").append(
           `<div class="news-article">
           <a href="${result.link}" target="_blank">
             <h2>${result.title}</h2>
@@ -291,10 +285,10 @@ function getNews(countryCode) {
             <img src="${artImg}" alt="article-image" />
             </a>
           </div>`
-        )
-      })
-    }
-  })
+        );
+      });
+    },
+  });
 }
 
 function getCovid(countrCode) {
@@ -304,55 +298,51 @@ function getCovid(countrCode) {
     data: {
       countryCode: countryCode,
     },
-    success: function(result) {
-      
+    success: function (result) {
       let data = result.data;
       let date = new Date(data.updated_at);
       let dateUpd = date.toDateString();
       let latest = data.latest_data;
-      console.log(latest);
+
       let recoveryRate = latest.calculated.recovery_rate;
-      $('#covid-country').html(data.name);
-      $('#covid-updated').html(dateUpd);
-      $('#covid-confirmed').html(latest.confirmed.toLocaleString('en'));
-      $('#covid-recovered').html(latest.recovered.toLocaleString('en'));
-      $('#covid-deaths').html(latest.deaths.toLocaleString('en'));
-      $('#covid-critical').html(latest.critical.toLocaleString('en'));
-      $('#covid-recovery-rate').html(Math.round(recoveryRate) + "%");
-    }
-  })
+      $("#covid-country").html(data.name);
+      $("#covid-updated").html(dateUpd);
+      $("#covid-confirmed").html(latest.confirmed.toLocaleString("en"));
+      $("#covid-recovered").html(latest.recovered.toLocaleString("en"));
+      $("#covid-deaths").html(latest.deaths.toLocaleString("en"));
+      $("#covid-critical").html(latest.critical.toLocaleString("en"));
+      $("#covid-recovery-rate").html(Math.round(recoveryRate) + "%");
+    },
+  });
 }
 
 function getWebcams(ccode) {
   if (webcamMarkers != undefined) {
     webcamMarkers.clearLayers();
   }
-  
+
   $.ajax({
-    url: './libs/php/getWebcams.php',
-    dataType: 'json',
+    url: "./libs/php/getWebcams.php",
+    dataType: "json",
     data: {
       countrCode: ccode,
     },
     success: function (data) {
-      let webArr = data.result['webcams'];
-      console.log(webArr);
+      let webArr = data.result["webcams"];
 
-      webArr.forEach(element => {
-        var lat = element.location['latitude'];
-        var lng = element.location['longitude'];
-        console.log(element.player['live']['embed'])
-        let content = `<h3>${element.location.city}</h3><iframe src="${element.player['day']['embed']}?autoplay=1" width="300vw"></iframe>`;
+      webArr.forEach((element) => {
+        var lat = element.location["latitude"];
+        var lng = element.location["longitude"];
+
+        let content = `<h3>${element.location.city}</h3><iframe src="${element.player["day"]["embed"]}?autoplay=1" width="300vw"></iframe>`;
         webcamMarkers.addLayer(
-          L.marker([lat,lng], {icon: webcamMarker}).bindPopup(content)
-        )
-      } )
-      console.log(webcamMarkers);
-      mymap.addLayer(webcamMarkers);
+          L.marker([lat, lng], { icon: webcamMarker }).bindPopup(content)
+        );
+      });
 
-    }
+      mymap.addLayer(webcamMarkers);
+    },
   });
-  
 }
 
 function getHolidays(countrCode) {
@@ -360,12 +350,12 @@ function getHolidays(countrCode) {
     url: "./libs/php/getHolidays.php",
     dataType: "json",
     data: {
-      countryCode: countryCode
+      countryCode: countryCode,
     },
-    success: function(result) {
-      $('#holiday-inner').empty();
-      result.forEach(holiday => {
-        $('#holiday-inner').append(
+    success: function (result) {
+      $("#holiday-inner").empty();
+      result.forEach((holiday) => {
+        $("#holiday-inner").append(
           `<div class="card-holiday card bg-light mb-3" style="max-width: 18rem;">
             <div class="card-header">${holiday.name}</div>
             <div class="card-body">
@@ -373,15 +363,15 @@ function getHolidays(countrCode) {
             <p class="card-text"> ${holiday.date}</p>
           </div>
         </div>`
-        )
-      })
-    }
-  })
+        );
+      });
+    },
+  });
 }
 
 function createMarkers() {
   markers.clearLayers();
-  console.log(markersArray);
+
   markersArray.forEach((element) => {
     let lat = element.lat;
     let lng = element.lng;
@@ -430,6 +420,5 @@ function clearMap() {
     }
     $("#slCountries").val("0").trigger("change");
   }
-    mymap.locate({ setView: true, maxZoom: 15, });
-
+  mymap.locate({ setView: true, maxZoom: 15 });
 }
